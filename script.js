@@ -118,7 +118,9 @@ async function join(id) {
 $('#solo').onclick = enter;
 $('#create').onclick = create;
 $('#join').onclick = () => join($('#code').value);
-$('#code').onkeydown = e => e.key === 'Enter' && join(e.target.value);
+$('#code').addEventListener('keydown', e => {
+  if (e.key === 'Enter') join(e.target.value);
+});
 $('#invite').onclick = async () => {
   const url = location.origin + location.pathname + '?room=' + room;
   try {
