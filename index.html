@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pairbooth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="curtain"></div>
+<header>
+  <h1>Pairbooth</h1>
+  <p>A photobooth for two, even when you're a few time zones apart.</p>
+</header>
+
+<main>
+  <section id="lobby" class="card">
+    <button id="solo" class="big">Solo booth</button>
+    <button id="create" class="big pink">Create a room</button>
+    <div class="join">
+      <input id="code" maxlength="5" placeholder="Room code" autocomplete="off" aria-label="Room code">
+      <button id="join">Join</button>
+    </div>
+    <p id="msg" role="status"></p>
+  </section>
+
+  <section id="booth" hidden>
+    <div class="room">
+      <span id="status">Solo booth</span>
+      <button id="invite" hidden>Copy invite link</button>
+    </div>
+
+    <div class="stage">
+      <video id="me" autoplay muted playsinline></video>
+      <video id="friend" autoplay playsinline hidden></video>
+      <div id="count" aria-live="assertive"></div>
+      <div id="flash"></div>
+    </div>
+
+    <div id="filters" class="filters" aria-label="Filters"></div>
+
+    <div class="opts">
+      <div><b>Frame</b><span id="frames" class="frames"></span></div>
+      <div><b>Layout</b>
+        <button data-l="strip">Strip</button>
+        <button data-l="grid">Grid</button>
+        <button data-l="single">Single</button>
+      </div>
+      <label><input type="checkbox" id="mirror" checked> Mirror my camera</label>
+    </div>
+
+    <button id="shoot" class="big pink">Take photos</button>
+  </section>
+</main>
+
+<dialog id="result">
+  <div class="slot"><canvas id="out"></canvas></div>
+  <div class="actions">
+    <a id="dl" class="btn" download="pairbooth.png">Save photo</a>
+    <button id="again">Retake</button>
+  </div>
+</dialog>
+
+<script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
